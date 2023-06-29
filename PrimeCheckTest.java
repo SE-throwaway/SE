@@ -1,9 +1,11 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class PrimeCheckTest {
@@ -43,7 +45,10 @@ public class PrimeCheckTest {
   // --------------------------------------------------------------- //
   @Test
   public void testNonPrimes() {
-    /* ToDo: insert a test here */
-    assertEquals("this will fail", true, false);
+    for (int tests = 0, number = 4; tests < 100 && number < 541;
+         ++tests, number += 2) {
+      for (; first100Primes.contains(number);) number += 2;
+      assertFalse(number + " is not prime!", PrimeCheck.isPrime(number));
+    }
   }
 }
